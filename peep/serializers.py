@@ -3,7 +3,7 @@ from .models import Peep, Chirp
 
 class ChirpSerializer(serializers.HyperlinkedModelSerializer):
 
-    restaurant_id = serializers.PrimaryKeyRelatedField(
+    post_id = serializers.PrimaryKeyRelatedField(
     queryset=Peep.objects.all(),
     source='peep'
     )
@@ -14,10 +14,9 @@ class ChirpSerializer(serializers.HyperlinkedModelSerializer):
         view_name='peep_detail', read_only=True)
 
     class Meta:
-        model = Peep
+        model = Chirp
         fields = ('text', 'post_id','user_id',
-                  'peep')
-
+                  'peeps','date')
 
 class PeepSerializer(serializers.HyperlinkedModelSerializer):
     
@@ -25,8 +24,8 @@ class PeepSerializer(serializers.HyperlinkedModelSerializer):
     chirp = ChirpSerializer(many=True, read_only=True)
 
         # how to populate the owner field on restaurant data
-    username = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        model=Peep
-        fields=('id', 'username', 'post', 'chirp', 'image', 'date')
+        model = Peep
+        fields=('id', 'post', 'chirp', 'image', 'date','owner')
