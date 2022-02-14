@@ -3,12 +3,12 @@ from .models import Peep, Chirp
 
 class ChirpSerializer(serializers.HyperlinkedModelSerializer):
 
-    restaurant_id = serializers.PrimaryKeyRelatedField(
+    post_id = serializers.PrimaryKeyRelatedField(
     queryset=Peep.objects.all(),
     source='peep'
     )
 
-    user_id = serializers.ReadOnlyField(source='owner.username')
+    username = serializers.ReadOnlyField(source='owner.username')
 
     peep = serializers.HyperlinkedRelatedField(
         view_name='peep_detail', read_only=True)

@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Peep(models.Model):
-    username = models.ForeignKey(
+    owner = models.ForeignKey(
         'users.User', related_name='peeps', on_delete=models.CASCADE)
     post = models.CharField(max_length=140)
     image = models.ImageField(upload_to = 'images/', default= 'images/default.jpg')
