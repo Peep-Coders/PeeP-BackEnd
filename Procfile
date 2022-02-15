@@ -1,1 +1,1 @@
-web:gunicorn PeeP.wsgi
+web: gunicorn peep.wsgi
