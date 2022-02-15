@@ -170,3 +170,5 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 
 AWS_DEFAULT_ACL = 'public-read'
 AWS_QUERYSTRING_AUTH = False
+
+STATIC_ROOT=os.path.join(BASE_DIR, "static/")
