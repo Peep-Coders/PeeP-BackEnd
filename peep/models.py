@@ -6,7 +6,7 @@ class Peep(models.Model):
         'users.User', related_name='peeps', on_delete=models.CASCADE)
     post = models.CharField(max_length=140)
     image = models.ImageField(upload_to = 'images/', default= 'images/default.jpg')
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.post
